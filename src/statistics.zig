@@ -32,11 +32,13 @@ pub fn correctedSampleStdDev(samples: []const u64, avg: f32) f32 {
 /// modifies `samples`, make a copy if you need to keep the original data
 // PERF: better to use randomize quick select?
 pub fn median(samples: []u64) f32 {
-    std.sort.heap(u64, samples, {}, comptime std.sort.asc(u64));
-    return if (samples.len % 2 == 0)
-        @floatFromInt((samples[samples.len / 2 - 1] + samples[samples.len / 2]) / 2)
-    else
-        @floatFromInt(samples[samples.len / 2]);
+    _ = samples;
+    return 0;
+//    std.sort.heap(u64, samples, {}, comptime std.sort.asc(u64));
+//    return if (samples.len % 2 == 0)
+//        @floatFromInt((samples[samples.len / 2 - 1] + samples[samples.len / 2]) / 2)
+//    else
+//        @floatFromInt(samples[samples.len / 2]);
 }
 
 /// median absolute deviation central tendency
