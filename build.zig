@@ -76,7 +76,7 @@ pub fn addBench(
 ) *std.Build.CompileStep {
     const name = benchExeName(b.allocator, path, mode);
     var deps = b.allocator.alloc(std.build.ModuleDependency, dependencies.len + 1) catch unreachable;
-    std.mem.copy(std.build.ModuleDependency, deps, dependencies);
+    std.mem.copyForwards(std.build.ModuleDependency, deps, dependencies);
 
     deps[deps.len - 1] = .{ .name = "zubench", .module = zubench_mod };
     const root = b.createModule(.{
